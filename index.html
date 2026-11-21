@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="JARVIS 1.0 — central pessoal de missões, hábitos e protocolo de emergência.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>JARVIS 1.0</title>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="JARVIS início"><span class="brand-mark">J</span><span>J.A.R.V.I.S.<small>PERSONAL COMMAND SYSTEM</small></span></a>
+    <div class="top-actions"><span class="status"><i></i> SISTEMA LOCAL</span><button id="installBtn" class="install-btn" hidden>＋ Instalar</button></div>
+  </header>
+
+  <main class="shell">
+    <section class="welcome">
+      <div><p class="eyebrow">CENTRAL DE COMANDO / <span id="todayLabel">HOJE</span></p>
+        <h1>Bom dia, <span>operador.</span></h1>
+        <p class="muted">Pequenas ações. Progresso real. Um dia de cada vez.</p></div>
+      <div class="clock-card"><span class="pulse"></span><span>JARVIS ONLINE</span><strong id="clock">--:--</strong><small>HORÁRIO LOCAL</small></div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="panel level-panel">
+        <div class="panel-head"><span class="eyebrow">PROGRESSÃO</span><span class="tag">TEMPORADA 01</span></div>
+        <div class="level-line"><div><span class="muted tiny">NÍVEL</span><strong id="level">01</strong></div><div class="rank"><span id="rank">RECRUTA</span><small id="xpText">0 / 100 XP</small></div></div>
+        <div class="progress"><span id="xpBar"></span></div>
+        <p class="tiny muted" id="xpHint">Complete missões para ganhar experiência.</p>
+      </article>
+      <article class="panel stat-card"><span class="stat-icon">◈</span><span class="eyebrow">MISSÕES HOJE</span><strong id="completedCount">0/4</strong><small>concluídas</small></article>
+      <article class="panel stat-card"><span class="stat-icon">⌁</span><span class="eyebrow">EXPERIÊNCIA TOTAL</span><strong id="totalXp">0</strong><small>XP acumulado</small></article>
+    </section>
+
+    <section class="main-grid">
+      <div class="panel missions-panel">
+        <div class="section-heading"><div><p class="eyebrow">OBJETIVOS DO DIA</p><h2>Missões ativas</h2></div><span class="tag" id="missionDate">HOJE</span></div>
+        <div id="missionList" class="mission-list"></div>
+        <form id="addMissionForm" class="add-mission">
+          <input id="missionInput" maxlength="55" placeholder="Adicionar missão personalizada…" aria-label="Nova missão" required>
+          <button type="submit" aria-label="Adicionar missão">＋</button>
+        </form>
+        <p class="tiny muted">Missões padrão reiniciam diariamente. Missões personalizadas também ficam salvas neste aparelho.</p>
+      </div>
+
+      <aside class="side-column">
+        <article class="panel attributes-panel">
+          <div class="section-heading"><div><p class="eyebrow">DESENVOLVIMENTO</p><h2>Atributos</h2></div></div>
+          <div class="attribute"><div><span>▣ Força</span><b>Academia</b></div><div class="attr-track"><i style="width:62%"></i></div></div>
+          <div class="attribute"><div><span>⌘ Intelecto</span><b>Estudos</b></div><div class="attr-track"><i style="width:24%"></i></div></div>
+          <div class="attribute"><div><span>◉ Disciplina</span><b>Rotina</b></div><div class="attr-track"><i style="width:18%"></i></div></div>
+          <div class="attribute"><div><span>✧ Espírito</span><b>Reflexão</b></div><div class="attr-track"><i style="width:30%"></i></div></div>
+          <p class="tiny muted">Indicadores visuais iniciais — não são avaliações reais nem notas de desempenho.</p>
+        </article>
+        <article class="panel emergency-card">
+          <div class="emergency-top"><span class="warning-icon">!</span><span class="eyebrow">ACESSO PRIORITÁRIO</span></div>
+          <h2>Protocolo E-01</h2><p class="muted">Quando perceber o piloto automático, abra o protocolo e escolha o próximo passo.</p>
+          <button id="emergencyBtn" class="emergency-btn"><span>◎</span> ACIONAR EMERGÊNCIA</button>
+        </article>
+      </aside>
+    </section>
+
+    <section class="panel quick-panel">
+      <div><p class="eyebrow">DIRETRIZ DO SISTEMA</p><h2>Prepare antes. Escolha durante.</h2><p class="muted">Não dependa apenas da memória ou da força de vontade. Deixe o próximo passo fácil de encontrar.</p></div>
+      <div class="quote-mark">“</div>
+    </section>
+    <footer><span>J.A.R.V.I.S. 1.0</span><span>Seus dados ficam neste aparelho.</span><button id="resetBtn" class="text-btn">Zerar progresso</button></footer>
+  </main>
+
+  <dialog id="emergencyDialog" class="modal">
+    <div class="modal-head"><div><p class="eyebrow danger-text">PROTOCOLO DE CONTINGÊNCIA</p><h2>E-01 / RETOMAR CONTROLE</h2></div><button class="close-btn" data-close aria-label="Fechar">×</button></div>
+    <p class="muted">Você não precisa resolver tudo agora. Só precisa escolher a próxima ação.</p>
+    <ol class="steps">
+      <li><b>PAUSAR</b><span>Interrompa por alguns segundos. Solte o que estiver fazendo, se for seguro.</span></li>
+      <li><b>IDENTIFICAR</b><span>O que está acontecendo? Tédio, ansiedade, vontade ou distração?</span></li>
+      <li><b>RECORDAR</b><span>Um impulso não é uma ordem. Você ainda pode escolher.</span></li>
+      <li><b>SUBSTITUIR</b><span>Mude de ambiente ou comece uma ação alternativa pequena e segura.</span></li>
+      <li><b>RETOMAR</b><span>Faça apenas os próximos dois minutos da atividade que importa.</span></li>
+    </ol>
+    <div class="command-quote">“Eu não preciso obedecer ao meu primeiro impulso. Posso escolher minha próxima ação.”</div>
+    <button id="finishEmergency" class="primary-btn">ENTENDI — VOLTAR À MISSÃO</button>
+  </dialog>
+
+  <dialog id="resetDialog" class="modal small-modal">
+    <div class="modal-head"><h2>Reiniciar progresso?</h2><button class="close-btn" data-close>×</button></div>
+    <p class="muted">Isso apaga XP, histórico e missões personalizadas deste aparelho. Não pode ser desfeito.</p>
+    <div class="modal-actions"><button class="secondary-btn" data-close>Cancelar</button><button id="confirmReset" class="danger-solid">Apagar dados</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

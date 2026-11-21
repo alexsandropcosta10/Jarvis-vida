@@ -1,0 +1,24 @@
+JARVIS 1.0 — PWA local
+======================
+
+O que já funciona:
+- Missões diárias com XP.
+- Missões personalizadas.
+- Níveis e patentes calculados pelo XP.
+- Protocolo E-01 em janela de emergência.
+- Dados salvos no armazenamento local do navegador.
+- Cache básico para abrir offline depois do primeiro carregamento.
+
+Como usar no Android:
+1. Publique o conteúdo desta pasta em uma hospedagem HTTPS estática (por exemplo, GitHub Pages).
+2. Abra o endereço HTTPS no Chrome do Android.
+3. No menu do Chrome, escolha "Instalar app" ou "Adicionar à tela inicial".
+4. Abra o JARVIS pelo ícone criado.
+
+Importante:
+- O PWA precisa ser servido por HTTPS (ou localhost) para instalação e service worker.
+- Este pacote não está publicado na internet. O usuário precisa escolher uma hospedagem e publicar os arquivos.
+- Os dados ficam no armazenamento local daquele navegador/aparelho. Limpar os dados do site pode apagá-los.
+- O botão "Zerar progresso" apaga os dados locais.
+- Os indicadores visuais dos atributos são ilustrativos e não medem capacidades reais.
+- O projeto não envia notificações no momento.
